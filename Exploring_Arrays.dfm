@@ -10,9 +10,7 @@ object frmIntroToArrays: TfrmIntroToArrays
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object lblPrompt: TLabel
     Left = 48
@@ -57,7 +55,7 @@ object frmIntroToArrays: TfrmIntroToArrays
     ParentFont = False
     TabOrder = 1
   end
-  object ListBox1: TListBox
+  object lstAllMonths: TListBox
     Left = 48
     Top = 188
     Width = 153
@@ -71,7 +69,7 @@ object frmIntroToArrays: TfrmIntroToArrays
     ParentFont = False
     TabOrder = 2
   end
-  object ListBox2: TListBox
+  object lstHuntingMonths: TListBox
     Left = 272
     Top = 188
     Width = 153
@@ -98,6 +96,7 @@ object frmIntroToArrays: TfrmIntroToArrays
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 4
+    OnClick = btnAllMonthsClick
   end
   object btnHuntingSeason: TButton
     Left = 272
@@ -112,5 +111,6 @@ object frmIntroToArrays: TfrmIntroToArrays
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 5
+    OnClick = btnHuntingSeasonClick
   end
 end

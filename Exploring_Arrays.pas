@@ -12,12 +12,14 @@ type
     sedMonthNumber: TSpinEdit;
     lblPrompt: TLabel;
     pnlMonthName: TPanel;
-    ListBox1: TListBox;
-    ListBox2: TListBox;
+    lstAllMonths: TListBox;
+    lstHuntingMonths: TListBox;
     btnAllMonths: TButton;
     btnHuntingSeason: TButton;
     procedure sedMonthNumberChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnAllMonthsClick(Sender: TObject);
+    procedure btnHuntingSeasonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,9 +33,39 @@ implementation
 
 {$R *.dfm}
 
+const
+  arrMonths : Array [1..12] of String = ('January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'Octuber', 'November', 'December');
 
 
+procedure TfrmIntroToArrays.btnAllMonthsClick(Sender: TObject);
+var
+  intMonthNumber : Integer;
+begin
+  lstAllMonths.Clear;
 
+  for intMonthNumber := 1 to 12 do
+    begin
+      lstAllMonths.Items.Add(arrMonths[intMonthNumber]);
+    end;
+end;
+
+procedure TfrmIntroToArrays.btnHuntingSeasonClick(Sender: TObject);
+var
+  strHuntingMonth : String;
+begin
+lstHuntingMonths.CLear;
+
+  for strHuntingMonth in arrMonths do
+  begin
+    if not strHuntingMonth.Contains('r') then
+    begin
+      lstHuntingMonths.Items.Add(strHuntingMonth);
+    end;
+
+  end;
+
+
+end;
 
 procedure TfrmIntroToArrays.FormCreate(Sender: TObject);
 begin
@@ -42,22 +74,9 @@ end;
 
 procedure TfrmIntroToArrays.sedMonthNumberChange(Sender: TObject);
 var
-   arrMonths : Array[1..12] of String;
+
    intMonthNumber : Integer;
 begin
-   arrMonths[1] := 'January';
-   arrMonths[2] := 'February';
-   arrMonths[3] := 'March';
-   arrMonths[4] := 'April';
-   arrMonths[5] := 'May';
-   arrMonths[6] := 'June';
-   arrMonths[7] := 'July';
-   arrMonths[8] := 'August';
-   arrMonths[9] := 'September';
-   arrMonths[10] := 'October';
-   arrMonths[11] := 'November';
-   arrMonths[12] := 'December';
-
    intMonthNumber := sedMonthNumber.Value;
 
    pnlMonthName.Caption := arrMonths[intMonthNumber];
